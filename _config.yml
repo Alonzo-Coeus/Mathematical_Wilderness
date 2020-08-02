@@ -1,0 +1,13 @@
+title: Ramblings in the Mathematical Wilderness
+email: Alonzo.Coeus@mail.com
+description: >- 
+  A blog* about Philosophy, Logic, Mathematics and Anything else under the sun.
+  
+  * more like a dumping ground for my .org files
+baseurl: "/Mathematical_Wilderness" 
+url: "Alonzo-Coeus.github.io"
+github_username: Alonzo-Coeus
+
+theme: minima
+plugins:
+  - jekyll-feed
