@@ -21,9 +21,14 @@ categories: haskell logic godel
 Loeb&rsquo;s theorem is a re-implementation of godel&rsquo;s theorem within modal logic.
 Allowing us to ignore &ldquo;non-essential&rdquo; implementation details such as godel numbering and how programs are actually encoded.
 Roughly Loeb&rsquo;s theorem states that if it is provable that a proof of a fact x implies x is true then it is provable x is true.
-Or in the language of modal logic
+Or in the language of modal logic ☐(☐x -> x) -> ☐x
 
 If the statement x in Loeb&rsquo;s theorem is taken to be &perp; loeb&rsquo;s theorem simplifies as follow
+
+x = &perp;  
+☐(☐ &perp; -> &perp;) -> ☐ &perp;  
+☐(¬ ☐ &perp;) -> &perp;  
+¬ ☐ (¬ ☐ &perp; )  
 
 Which translates in english is equivalent to saying &ldquo;it is not provable that false-hood is not provable&rdquo; or in other words &ldquo;A logical system can&rsquo;t assurt it&rsquo;s own consistency&rdquo;.
 Which is one of the primary insights offered by Godel&rsquo;s theorem.
