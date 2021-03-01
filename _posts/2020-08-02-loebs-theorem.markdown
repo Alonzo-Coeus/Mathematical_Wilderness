@@ -35,8 +35,8 @@ Which is one of the primary insights offered by Godel&rsquo;s theorem.
 
 Other implications of Loeb&rsquo;s theorem is that of the &ldquo;loebstical&rdquo; discussed in large-part by MIRI and lesswrong.
 In short the &ldquo;loebstical&rdquo; is the problem faced by self-improving AI programs, where they cannot prove facts about future agents without them being of a weaker axiomatic system.
-This damages the possibilty of creating a recursive self-improving AI as for every rewrite it would have to downgrade to a less powerful axiomatic system.
-As well as this the loebstical also makes it difficult for AI systems to reason about equally powerful systems or work within enviroment more powerful than themselves, which is a requirement for AGI as it would be embedded within it&rsquo;s enviroment, and thus cannot be more powerful than it.
+This damages the possibility of creating a recursive self-improving AI as for every rewrite it would have to downgrade to a less powerful axiomatic system.
+As well as this the loebstical also makes it difficult for AI systems to reason about equally powerful systems or work within enviroment more powerful than themselves, which is a requirement for AGI as it would be embedded within it&rsquo;s environment, and thus cannot be more powerful than it.
 
 
 <a id="org681f198"></a>
@@ -50,14 +50,14 @@ For a proof of lob&rsquo;s theorem we need three axioms, distribution, necessiti
       distribution :: m (a -> b) -> (m a -> m b)
       necessitation :: a -> m a -- if it's true it's provable
 
-To prove loeb&rsquo;s theorem within this defenition of Modal logic, we will need construct a function of type.
+To prove loeb&rsquo;s theorem within this definition of Modal logic, we will need construct a function of type.
 
     loeb :: Modality m => m (m a -> a) -> m a
 
-When the type constructor used is &ldquo;quotation&rdquo; this becomes a programatic implementation of loeb&rsquo;s theorem as the modality can be viewed as an applicitive wrapping a type implemented within a DSLs AST.
-As Curry-Howard shows an isomorphism between the AST type-constructor in a language (lispers think quote) and the provibality modality within logic.
+When the type constructor used is &ldquo;quotation&rdquo; this becomes a programmatic implementation of loeb&rsquo;s theorem as the modality can be viewed as an applicitive wrapping a type implemented within a DSLs AST.
+As Curry-Howard shows an isomorphism between the AST type-constructor in a language (lispers think quote) and the provability modality within logic.
 
-However before we can implement loeb&rsquo;s theroem we should first implement fmap with the provided methods given by the modality type-class.
+However before we can implement loeb&rsquo;s theorem we should first implement fmap with the provided methods given by the modality type-class.
 
     modal_fmap :: Modality m => (a -> b) -> (m a -> m b)
     modal_fmap = distribution . necessitiation
@@ -69,7 +69,7 @@ Now using modal<sub>fmap</sub> we can implement loeb&rsquo;s theorem.
 
     loeb = fix (modal_fmap . flip id =<<)
 
-This implementation is rather elagant in my eyes, as it&rsquo;s point free and shows loeb&rsquo;s theorem as a modfied fixed point combinator.
+This implementation is rather elegant in my eyes, as it&rsquo;s point free and shows loeb&rsquo;s theorem as a modified fixed point combinator.
 However the use of a fixed point combinator also makes it an invalid proof as the implementation does not posses totality.
 
 
@@ -82,13 +82,13 @@ One of the interesting things about loeb is it&rsquo;s similarity with the fixed
     fix  ::  (a -> a) -> a
     loeb :: Modality m => m (m a -> a) -> m a
 
-If you drop the modality, for example by using the identity Applictive both become equivalent.
+If you drop the modality, for example by using the identity Applicitive both become equivalent.
 The deeper reason for this rather than just dropping modality terms is by using the identity applicitive as your notion of provability it becomes isomorphic to truth within the system.
-However the cost of doing this is that your logic becomes inconsitent as constructing a value of any type becomes trivial as the fixed point of the identity function is a member of all types.
-Thus making all statements trivialy true, as a side effect of attempting to make a logic both complete (a -> Prov a) and consistent (Prov a -> a).
-Which also means that self-interpreters are impossible in any theorem proving system as it would lead to all statements being trivialy true which detracts from the usefulness of such a system.
+However the cost of doing this is that your logic becomes inconsistent as constructing a value of any type becomes trivial as the fixed point of the identity function is a member of all types.
+Thus making all statements trivially true, as a side effect of attempting to make a logic both complete (a -> Prov a) and consistent (Prov a -> a).
+Which also means that self-interpreters are impossible in any theorem proving system as it would lead to all statements being trivially true which detracts from the usefulness of such a system.
 
-Another interesting note about loeb is that if you for example use a List as the &ldquo;modality&rdquo; the loeb&rsquo;s theorem becomes a spreasheet evaluator (This isn&rsquo;t my discovery &ldquo;A neighborhood of infinity&rdquo; first posted it to my knowledge).
+Another interesting note about loeb is that if you for example use a List as the &ldquo;modality&rdquo; the loeb&rsquo;s theorem becomes a spreadsheet evaluator (This isn&rsquo;t my discovery &ldquo;A neighbourhood of infinity&rdquo; first posted it to my knowledge).
 
     instance Modality [] where
       distribution = (<*>)
@@ -105,9 +105,9 @@ Returns:
 
 # Conclusion
 
-Loeb&rsquo;s theorem is in my eyes one of the most elagent theorems in logic and computer science, rivaling Curry-Howard and the Church-Turing Thesis.
-With it&rsquo;s implications spanning from the improvability of improvability of false-hood, to the impossibility of self-interpeters as they&rsquo;d lead to inconsistent logics.
-But I think the fact that one of the most profound results of 20th century meta-mathematics is effectively a spreadsheet interpreter makes Loeb&rsquo;s theorem by far the funniest theorem in meta-mathmatics and logic.
+Loeb&rsquo;s theorem is in my eyes one of the most elegant theorems in logic and computer science, rivalling Curry-Howard and the Church-Turing Thesis.
+With it&rsquo;s implications spanning from the improvability of improvability of false-hood, to the impossibility of self-interpreters as they&rsquo;d lead to inconsistent logics.
+But I think the fact that one of the most profound results of 20th century meta-mathematics is effectively a spreadsheet interpreter makes Loeb&rsquo;s theorem by far the funniest theorem in meta-mathematics and logic.
 
 
 <a id="org6dc761b"></a>
